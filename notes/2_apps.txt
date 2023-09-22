@@ -1,0 +1,5 @@
+A big project can have multiple different features. Taking an example of FB it has features like Group,
+Page, Chat, Feeds etc. Such features are classified into separate folders which is known
+as apps
+1. "python manage.py startapp <app_name>" command is used to create a new application
+2. The newly created app must be registered in settings.py file
