@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Student
 
 
 def student(request):
@@ -9,3 +10,9 @@ def student(request):
         {"name": "Hary", "age": 40, "address": "LTP"},
     ]
     return render(request, template_name="temp_inheritance/student.html", context={"students": students})
+
+
+def model_student(request):
+    students = Student.objects.all()
+    return render(request, template_name="temp_inheritance/model_student.html",
+                  context={"students": students})

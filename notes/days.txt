@@ -1,3 +1,4 @@
 1. Django Introduction
 2. App introduction and template rendering
-3. Template Inheritance, Models
+3. Template Inheritance
+4. Models
