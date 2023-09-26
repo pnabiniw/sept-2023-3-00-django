@@ -13,6 +13,6 @@ def student(request):
 
 
 def model_student(request):
-    students = Student.objects.all()
+    students = Student.objects.all()  # queryset => [obj1, obj2, obj3]
     return render(request, template_name="temp_inheritance/model_student.html",
                   context={"students": students})

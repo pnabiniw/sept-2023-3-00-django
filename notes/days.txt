@@ -2,3 +2,4 @@
 2. App introduction and template rendering
 3. Template Inheritance
 4. Models
+5. Model Relations

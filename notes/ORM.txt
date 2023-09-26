@@ -10,3 +10,32 @@ Read
 students = Student.objects.all()  # ORM
 print(students)  # It returns all students
 
+students = Student.objects.filter(age=30)
+print(students)  # Queryset
+
+student = Student.objects.get(id=1)
+print(student)  # <Student Obj>
+
+Note: 1. If we "get" with the value not present in the table then it raises "DoesNotExistError"
+         If we "filter" with the value not present in the table then it returns empty queryset
+
+      2. If we get the value present multiple times in the table then it raises "MultipleObjectsReturned" error
+         If we "filter" the value present multiple times in the table then it gives queryset with multiple objects
+
+
+Create
+Student.objects.create(name="ABC", age=30, email="a@a.com")
+
+
+
+Update
+Student.objects.filter(name="Jon").update(name="John")
+
+s = Student.objects.get(id=1)
+s.name = "Gita"
+s.save()
+
+
+Delete
+Student.objects.filter(id=100).delete()
+Student.objects.get(id=100).delete()
