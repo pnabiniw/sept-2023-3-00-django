@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Student
+from .models import Student, StudentProfile
 
 
 def student(request):
@@ -16,3 +16,8 @@ def model_student(request):
     students = Student.objects.all()  # queryset => [obj1, obj2, obj3]
     return render(request, template_name="temp_inheritance/model_student.html",
                   context={"students": students})
+
+
+def student_profile(request):
+    profiles = StudentProfile.objects.all()
+    return render(request, 'temp_inheritance/profile.html', {"profiles": profiles})

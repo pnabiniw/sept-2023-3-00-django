@@ -6,23 +6,19 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Age</th>
       <th scope="col">Contact</th>
       <th scope="col">Address</th>
       <th scope="col">Roll No</th>
     </tr>
   </thead>
   <tbody>
-  {% for student in students %}
+  {% for profile in profiles %}
     <tr>
       <th scope="row">{{ forloop.counter }}</th>
-      <td>{{ student.name }}</td>
-      <td>{{ student.email }}</td>
-      <td>{{ student.age }}</td>
-      <td>{{ student.studentprofile.contact }}</td>
-      <td>{{ student.studentprofile.address }}</td>
-      <td>{{ student.studentprofile.roll_no }}</td>
+      <td>{{ profile.student.name }}</td>
+      <td>{{ profile.contact }}</td>
+      <td>{{ profile.address }}</td>
+      <td>{{ profile.roll_no }}</td>
     </tr>
   {% endfor %}
   </tbody>

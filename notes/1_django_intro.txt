@@ -42,9 +42,3 @@ learning Python
 	=> python manage.py runserver
 
 
-7. Django follows MVT Architecture
-    What is MVC (Model View Controller) architecture?
-        - In MVC architecture we write table models in Model, HTML/CSS/JS in View and functions/logic
-        in the controller. Laravel, .net etc. follows MVC arch.
-        - In contrast, we write table models in Model, HTML/CSS/JS in Template and functions/logic in
-        the MVT architecture. Django follows MVT arch.
