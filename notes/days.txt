@@ -4,3 +4,4 @@
 4. Models
 5. Model Relations
 6. One-Many Relation
+7. Advance ORM, Static rendering

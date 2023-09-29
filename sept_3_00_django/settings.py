@@ -1,3 +1,4 @@
+import os.path
 from pathlib import Path
 from .env import SECRET_KEY
 
@@ -22,7 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles'
 ]
 
-PROJECT_APPS = ['myapp', 'temp_inheritance']
+PROJECT_APPS = ['myapp', 'temp_inheritance', "static_render"]
 THIRD_PARTY_APPS = ['django_extensions']
 INSTALLED_APPS += PROJECT_APPS + THIRD_PARTY_APPS
 
@@ -105,7 +106,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+# STATIC_ROOT = "static"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
