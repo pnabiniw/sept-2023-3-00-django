@@ -24,3 +24,24 @@ class StudentProfile(models.Model):
     contact = models.CharField(max_length=14)
     address = models.CharField(max_length=20)
     roll_no = models.IntegerField()
+
+
+class Publication(models.Model):
+    title = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.title
+
+
+class Article(models.Model):
+    headline = models.CharField(max_length=20)
+    # publications = models.ManyToManyField(Publication)
+
+    def __str__(self):
+        return self.headline
+
+
+# class ArticlePublication(models.Model):
+#     article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name="article_publications")
+#     publication = models.ForeignKey(Publication, on_delete=models.CASCADE, related_name="publication_articles")
+#

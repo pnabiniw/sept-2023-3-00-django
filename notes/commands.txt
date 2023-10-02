@@ -4,3 +4,10 @@
 4. python manage.py makemigrations
 5. python manage.py migrate
 6. python manage.py shell
+
+7. Start a psql shell
+    => psql -U postgres  (Windows)
+    => sudo -i -u postgres (Linux)
+    => Double click the shell icon (Mac)
+
+8. CREATE DATABASE SEPT3DB;  (Creates a new DB)

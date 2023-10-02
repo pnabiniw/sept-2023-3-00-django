@@ -39,3 +39,27 @@ s.save()
 Delete
 Student.objects.filter(id=100).delete()
 Student.objects.get(id=100).delete()
+
+
+
+For Many-Many
+Let a1, a2, a3 be Article objects and p1, p2, p3 be publication objects
+
+a1.publications.add(p2)
+a1.publications.add(p1)
+a2.publications.add(p1)
+a1.publications.all()
+Article.objects.filter(publications=1)
+
+a2.publications.remove(p1)
+
+p2.article_set.add(a1)
+p1.article_set.all()
+Publication.objects.filter(article=1)
+p1.article_set.remove(a1)
+
+AP = Article.publications.through
+AP.objects.all()
+AP.objects.get(id=1)
+AP.objects.filter(article_id=2)
+
