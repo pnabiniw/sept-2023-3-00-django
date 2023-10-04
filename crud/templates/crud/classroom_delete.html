@@ -1,0 +1,10 @@
+{% extends "crud/base.html" %}
+
+{% block content %}
+    <h1>Are you sure you want to delete classroom {{ classroom.name }}?</h1>
+    <form method="post" action="{% url 'classroom_delete' classroom.id %}">
+        {% csrf_token %}
+        <a class="btn btn-primary" href="{% url 'crud_classroom' %}">Cancel</a>
+        <button class="btn btn-danger" type="submit">Delete</button>
+    </form>
+{% endblock %}

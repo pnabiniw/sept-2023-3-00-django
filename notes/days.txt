@@ -7,3 +7,4 @@
 7. Advance ORM, Static rendering
 8. PostgresDB connect, Many-Many Relation
 9. Template Forms
+10. CRUD App start
