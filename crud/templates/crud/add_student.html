@@ -1,0 +1,45 @@
+{% extends 'crud/base.html' %}
+
+
+{% block content %}
+    <h1>{{ title }}</h1><br>
+
+    <form class="row g-3" method="post" action="{% url 'add_student' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Name</label>
+            <input type="text" class="form-control" id="inputEmail4" name="name">
+        </div>
+        <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Email</label>
+            <input type="email" class="form-control" name="email">
+        </div>
+        <div class="col-6">
+            <label for="inputAddress" class="form-label">Age</label>
+            <input type="number" class="form-control" id="inputAddress" name="age">
+        </div>
+        <div class="col-6">
+            <label for="inputAddress2" class="form-label">Address</label>
+            <input type="text" class="form-control" id="inputAddress2" name="address">
+        </div>
+        <div class="col-md-6">
+            <label for="inputCity" class="form-label">Contact</label>
+            <input type="text" class="form-control" id="inputCity" name="contact">
+        </div>
+        <div class="col-6">
+            <label>Profile Picture</label>
+            <input type="file" name="pp" class="form-control">
+        </div>
+{#        <div class="col-md-4">#}
+{#            <label for="inputState" class="form-label">State</label>#}
+{#            <select id="inputState" class="form-select">#}
+{#                <option selected>Choose...</option>#}
+{#                <option>...</option>#}
+{#            </select>#}
+{#        </div>#}
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a class="btn btn-danger" href="{% url 'crud_student' %}">Cancel</a>
+        </div>
+    </form>
+{% endblock %}
