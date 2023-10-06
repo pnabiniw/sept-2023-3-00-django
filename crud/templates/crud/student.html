@@ -26,7 +26,7 @@
                 <td>{{ student.age }}</td>
                 <td>{{ student.classroom.name }}</td>
                 <td>
-                    <a class="btn btn-warning" href="#">Detail</a>
+                    <a class="btn btn-warning" href="{% url 'student_detail' student.id %}">Detail</a>
                     <a class="btn btn-danger" href="#">Delete</a>
                 </td>
             </tr>

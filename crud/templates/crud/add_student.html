@@ -30,13 +30,14 @@
             <label>Profile Picture</label>
             <input type="file" name="pp" class="form-control">
         </div>
-{#        <div class="col-md-4">#}
-{#            <label for="inputState" class="form-label">State</label>#}
-{#            <select id="inputState" class="form-select">#}
-{#                <option selected>Choose...</option>#}
-{#                <option>...</option>#}
-{#            </select>#}
-{#        </div>#}
+        <div class="col-md-4">
+            <label for="inputState" class="form-label">Classroom</label>
+            <select id="inputState" class="form-select" name="class_id">
+                {% for class in classes %}
+                    <option value={{ class.id }} selected>{{ class.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
         <div class="col-12">
             <button type="submit" class="btn btn-primary">Submit</button>
             <a class="btn btn-danger" href="{% url 'crud_student' %}">Cancel</a>
