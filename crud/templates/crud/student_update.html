@@ -35,8 +35,23 @@
                 </div>
                 <div class="col-md-6">
                     <label for="inputCity" class="form-label">Contact</label>
-                    <input type="text" class="form-control" id="inputCity" name="contact" value="{{ student.studentprofile.contact }}">
-                </div><br>
+                    <input type="text" class="form-control" id="inputCity" name="contact"
+                           value="{{ student.studentprofile.contact }}">
+                </div>
+                <br>
+                <div class="col-md-4">
+                    <label for="inputState" class="form-label">Classroom</label>
+                    <select id="inputState" class="form-select" name="class_id">
+                        {% for class in classes %}
+                            {% if class.name == student.classroom.name %}
+                                <option value={{ class.id }} selected>{{ class.name }}</option>
+                            {% else %}
+                                <option value={{ class.id }}>{{ class.name }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+                <br>
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <a href="{% url 'student_detail' student.id %}" class="btn btn-danger">Cancel</a>
             </div>

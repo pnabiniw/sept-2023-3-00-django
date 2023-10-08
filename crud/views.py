@@ -80,6 +80,6 @@ def student_update(request, id):
         return redirect("student_detail", std.id)
 
     return render(request, template_name="crud/student_update.html",
-                  context={"title": "Student Update", "student": std})
+                  context={"title": "Student Update", "student": std, "classes": ClassRoom.objects.all()})
 
 
