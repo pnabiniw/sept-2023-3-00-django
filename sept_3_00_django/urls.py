@@ -9,6 +9,7 @@ urlpatterns = [
     path('inherit/', include('temp_inheritance.urls')),
     path("sr/", include("static_render.urls")),
     path("forms/", include("temp_forms.urls")),
+    path("cb/", include("classbased.urls")),
     path("", include('crud.urls')),
     path('', include('myapp.urls'))
 ]

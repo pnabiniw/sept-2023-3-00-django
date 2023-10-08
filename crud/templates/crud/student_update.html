@@ -43,7 +43,7 @@
                     <label for="inputState" class="form-label">Classroom</label>
                     <select id="inputState" class="form-select" name="class_id">
                         {% for class in classes %}
-                            {% if class.name == student.classroom.name %}
+                            {% if class.id == student.classroom.id %}
                                 <option value={{ class.id }} selected>{{ class.name }}</option>
                             {% else %}
                                 <option value={{ class.id }}>{{ class.name }}</option>
