@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from crud.models import ClassRoom, Student, StudentProfile
 from .forms import ClassRoomForm, ClassRoomModelForm
 from django.views import View
-from django.views.generic import TemplateView, CreateView, ListView
+from django.views.generic import TemplateView, CreateView, ListView, DetailView
 
 
 def classroom(request):
@@ -80,3 +80,10 @@ class StudentListView(ListView):
     #     context = super().get_context_data(*args, **kwargs)
     #     context["students"] = self.queryset
     #     return context  # student_list
+
+
+class StudentDetailView(DetailView):
+    queryset = Student.objects.all()
+    template_name = "classbased/student_detail.html"
+    slug_url_kwarg = "id"
+    slug_field = "id"
