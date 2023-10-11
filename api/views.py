@@ -1,7 +1,10 @@
 from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from crud.models import Student
+from rest_framework import status
+from crud.models import Student, ClassRoom
+
+from .serializers import ClassRoomSerializer, ClassRoomModelSerializer, StudentModelSerializer
 
 
 def hello_world(request):
@@ -25,7 +28,7 @@ class SimpleStudentView(APIView):
         except Student.DoesNotExist:
             return Response({
                 "detail": "Not Found"
-            })
+            }, status=status.HTTP_404_NOT_FOUND)
         return Response({
             "name": student.name,
             "email": student.email,
@@ -39,11 +42,68 @@ class SimpleStudentListView(APIView):
     def get(self, *args, **kwargs):
         students = Student.objects.all()
         response = [{"name": student.name, "age": 30, "email": student.email} for student in students]
-        # for student in students:
-        #     response.append({
-        #         "name": student.name,
-        #         "age": student.age,
-        #         "email": student.email,
-        #         "classroom": student.classroom.name
-        #     })
         return Response(response)
+
+    def post(self, *args, **kwargs):
+        print(self.request.data)
+        name = self.request.data.get("name")
+        email = self.request.data.get("email")
+        age = self.request.data.get("age")
+        classroom = self.request.data.get("classroom")
+        Student.objects.create(name=name, email=email, age=age, classroom_id=classroom)
+        return Response({
+            "detail": "Student created successfully !!"
+        }, status=status.HTTP_201_CREATED)
+
+
+class ClassRoomDetailAPIView(APIView):
+    def get(self, *args, **kwargs):
+        try:
+            classroom = ClassRoom.objects.get(id=kwargs['id'])
+        except ClassRoom.DoesNotExist:
+            return Response({
+                "detail": "Not Found"
+            }, status=status.HTTP_404_NOT_FOUND)
+        serializer = ClassRoomSerializer(classroom)  # Serialization
+        return Response(serializer.data)
+
+
+class ClassRoomAPIView(APIView):
+    def post(self, request, *args, **kwargs):
+        serializer = ClassRoomModelSerializer(data=request.data)
+        if serializer.is_valid():
+            # name = serializer.validated_data.get("name")
+            # ClassRoom.objects.create(name=name)
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def get(self, *args, **kwargs):
+        classrooms = ClassRoom.objects.all()
+        serializer = ClassRoomModelSerializer(classrooms, many=True)
+        return Response(serializer.data)
+
+
+class StudentDetailAPIView(APIView):
+    def get(self, *args, **kwargs):
+        try:
+            student = Student.objects.get(id=kwargs['id'])
+        except Student.DoesNotExist:
+            return Response({
+                "detail": "Not Found"
+            }, status=status.HTTP_404_NOT_FOUND)
+        ser = StudentModelSerializer(student)
+        return Response(ser.data)
+
+
+class StudentAPIView(APIView):
+    def get(self, *args, **kwargs):
+        students = Student.objects.all()
+        ser = StudentModelSerializer(students, many=True)
+        return Response(ser.data)
+
+    def post(self, *args, **kwargs):
+        ser = StudentModelSerializer(data=self.request.data)
+        ser.is_valid(raise_exception=True)
+        ser.save()
+        return Response(ser.data, status=status.HTTP_201_CREATED)

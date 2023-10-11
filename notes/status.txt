@@ -1,0 +1,15 @@
+When request is made to the server it returns a response and that response has several status types
+Some of the status types are mentioned below:
+200 => Success
+201 => Created
+204 => No content
+
+400 => Bad Request
+401 => Unauthorized
+403 => No Permission (Forbidden)
+404 = > Not Found
+405 => Method Not Allowed
+
+
+500 => Internal Server Error
+502 => Bad Gateway

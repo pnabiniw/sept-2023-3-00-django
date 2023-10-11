@@ -12,3 +12,7 @@
 12.
 13.
 14.
+15. Django Forms
+16. Class Based Views
+17. DRF start
+18. Serializers
