@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import hello_world, MessageView, SimpleStudentView, \
     SimpleStudentListView, ClassRoomDetailAPIView, ClassRoomAPIView, StudentAPIView, \
-    StudentDetailAPIView
+    StudentDetailAPIView, StudentProfileAPIView
 
 
 urlpatterns = [
@@ -16,6 +16,7 @@ urls_with_serializers = [
     path("student/<int:id>/", StudentDetailAPIView.as_view()),
     path("classroom/", ClassRoomAPIView.as_view()),
     path("student/", StudentAPIView.as_view()),
+    path("student-profile/", StudentProfileAPIView.as_view()),
 ]
 
 urlpatterns += urls_with_serializers
