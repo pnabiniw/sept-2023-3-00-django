@@ -2,6 +2,8 @@ from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIView, \
+    DestroyAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from crud.models import Student, ClassRoom, StudentProfile
 
 from .serializers import ClassRoomSerializer, ClassRoomModelSerializer, StudentModelSerializer, \
@@ -121,3 +123,48 @@ class StudentProfileAPIView(APIView):
         ser.is_valid(raise_exception=True)
         ser.save()
         return Response(ser.data, status=status.HTTP_201_CREATED)
+
+
+class ClassRoomListAPIView(ListAPIView):
+    queryset = ClassRoom.objects.all()
+    serializer_class = ClassRoomModelSerializer
+
+
+class ClassRoomCreateAPIView(CreateAPIView):
+    # queryset = ClassRoom.objects.all()
+    serializer_class = ClassRoomModelSerializer
+
+
+class ClassRoomRetrieveAPIView(RetrieveAPIView):
+    queryset = ClassRoom.objects.all()
+    serializer_class = ClassRoomModelSerializer
+
+
+class ClassRoomUpdateAPIView(UpdateAPIView):
+    queryset = ClassRoom.objects.all()
+    serializer_class = ClassRoomModelSerializer
+
+
+class ClassRoomDeleteAPIView(DestroyAPIView):
+    queryset = ClassRoom.objects.all()
+    serializer_class = ClassRoomModelSerializer
+
+
+class ClassRoomListCreateAPIView(ListCreateAPIView):
+    queryset = ClassRoom.objects.all()
+    serializer_class = ClassRoomModelSerializer
+
+
+class ClassRoomObjectAPIView(RetrieveUpdateDestroyAPIView):
+    queryset = ClassRoom.objects.all()
+    serializer_class = ClassRoomModelSerializer
+            
+
+# class ListAPIView:
+#     queryset = None
+#     serializer = None
+#
+#     def get(self, *args, **kwargs):
+#         queryset = self.queryset
+#         ser = self.serializer(queryset, many=True)
+#         return Response(ser.data)
