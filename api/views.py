@@ -4,10 +4,12 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIView, \
     DestroyAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.viewsets import ModelViewSet
 from crud.models import Student, ClassRoom, StudentProfile
 
 from .serializers import ClassRoomSerializer, ClassRoomModelSerializer, StudentModelSerializer, \
     StudentProfileModelSerializer
+from .viewsets import ListUpdateViewSet
 
 
 def hello_world(request):
@@ -158,7 +160,15 @@ class ClassRoomListCreateAPIView(ListCreateAPIView):
 class ClassRoomObjectAPIView(RetrieveUpdateDestroyAPIView):
     queryset = ClassRoom.objects.all()
     serializer_class = ClassRoomModelSerializer
-            
+
+
+class ClassRoomViewSet(ModelViewSet):
+    queryset = ClassRoom.objects.all()
+    serializer_class = ClassRoomModelSerializer
+
+class ClassRoomListUpdateViewSet(ListUpdateViewSet):
+    queryset = ClassRoom.objects.all()
+    serializer_class = ClassRoomModelSerializer
 
 # class ListAPIView:
 #     queryset = None

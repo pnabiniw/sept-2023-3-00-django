@@ -1,9 +1,15 @@
 from django.urls import path
+from rest_framework.routers import DefaultRouter
+
 from .views import hello_world, MessageView, SimpleStudentView, \
     SimpleStudentListView, ClassRoomDetailAPIView, ClassRoomAPIView, StudentAPIView, \
     StudentDetailAPIView, StudentProfileAPIView, ClassRoomListAPIView, ClassRoomCreateAPIView, \
     ClassRoomRetrieveAPIView, ClassRoomUpdateAPIView, ClassRoomDeleteAPIView, \
-    ClassRoomListCreateAPIView, ClassRoomObjectAPIView
+    ClassRoomListCreateAPIView, ClassRoomObjectAPIView, ClassRoomViewSet, ClassRoomListUpdateViewSet
+
+router = DefaultRouter()
+router.register("classroom-viewset", ClassRoomViewSet)
+router.register("classroom-list-update", ClassRoomListUpdateViewSet)
 
 
 urlpatterns = [
@@ -31,4 +37,4 @@ generic_urls = [
     path("generic-classroom/<int:pk>/", ClassRoomObjectAPIView.as_view()),
 ]
 
-urlpatterns += urls_with_serializers + generic_urls
+urlpatterns += urls_with_serializers + generic_urls + router.urls
