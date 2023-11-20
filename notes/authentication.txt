@@ -1,0 +1,6 @@
+Types of authentication
+
+1. Basic Authentication
+2. Session Authentication
+3. Token Authentication (Knox)
+4. JWT Authentication (Json Web Token)   # Refresh and Access token

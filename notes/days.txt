@@ -16,3 +16,7 @@
 16. Class Based Views
 17. DRF start
 18. Serializers
+19. APIView
+20. GenericViews
+21. ModelViewSet
+22.

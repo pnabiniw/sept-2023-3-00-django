@@ -5,11 +5,13 @@ from rest_framework import status
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIView, \
     DestroyAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from crud.models import Student, ClassRoom, StudentProfile
 
 from .serializers import ClassRoomSerializer, ClassRoomModelSerializer, StudentModelSerializer, \
     StudentProfileModelSerializer
 from .viewsets import ListUpdateViewSet
+from .permissions import IsSuperAdminUser
 
 
 def hello_world(request):
@@ -163,8 +165,16 @@ class ClassRoomObjectAPIView(RetrieveUpdateDestroyAPIView):
 
 
 class ClassRoomViewSet(ModelViewSet):
+    # permission_classes = [IsAuthenticated, ]
+    # permission_classes = [AllowAny, ]
     queryset = ClassRoom.objects.all()
     serializer_class = ClassRoomModelSerializer
+
+    def get_permissions(self):
+        if self.request.method == "GET":
+            return [AllowAny(), ]
+        return [IsSuperAdminUser(), ]
+
 
 class ClassRoomListUpdateViewSet(ListUpdateViewSet):
     queryset = ClassRoom.objects.all()
