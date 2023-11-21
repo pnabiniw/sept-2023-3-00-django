@@ -6,12 +6,14 @@ from .views import hello_world, MessageView, SimpleStudentView, \
     SimpleStudentListView, ClassRoomDetailAPIView, ClassRoomAPIView, StudentAPIView, \
     StudentDetailAPIView, StudentProfileAPIView, ClassRoomListAPIView, ClassRoomCreateAPIView, \
     ClassRoomRetrieveAPIView, ClassRoomUpdateAPIView, ClassRoomDeleteAPIView, \
-    ClassRoomListCreateAPIView, ClassRoomObjectAPIView, ClassRoomViewSet, ClassRoomListUpdateViewSet
+    ClassRoomListCreateAPIView, ClassRoomObjectAPIView, ClassRoomViewSet, ClassRoomListUpdateViewSet,\
+    StudentViewSet
 from .login import UserLoginView
 
 router = DefaultRouter()
 router.register("classroom-viewset", ClassRoomViewSet)
 router.register("classroom-list-update", ClassRoomListUpdateViewSet)
+router.register("student-viewset", StudentViewSet, basename="student_viewset")
 
 
 urlpatterns = [
